@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebCam</title>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <div>
         <h1>WebCam</h1>
         <div>
-            <video id="video"></video>
+            <canvas id="canvas" width="640" height="480px"></canvas>
+            <video id="video" width="640px" height="480px" style="display:none;"></video>
         </div>
+        <button id="savebtn" style="padding:6px;border:none;background-color:#00a8e1;color:#fff;">SavePicture</button>
     </div>
-    <script src="js/webcam.js"></script>  
+    <script type="module" src="js/webcam.js"></script>
 </body>
 </html>
