@@ -1,6 +1,6 @@
 // HTML要素の取得
 const video = document.getElementById("video")
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d');
 const savebtn = document.getElementById("savebtn")
 
@@ -9,12 +9,12 @@ const socket = io();
 
 // 起動処理
 const init = () => {
-    setCamera();
-    setBtn();
-    setSocket();
+    setCamera()
+    setButton()
+    setResultSocket()
 };
 
-// カメラ起動
+// カメラ処理
 const setCamera = () => {
     navigator.mediaDevices.getUserMedia({
         video: true,
@@ -36,8 +36,16 @@ const drawCanvas = () => {
     setInterval(draw, 100)
 };
 
-// 画像保存ボタン処理
-const setBtn = () => {
+// ボタン処理
+const setButton = () => {
+    // カーソル選択時
+    savebtn.addEventListener("mouseover", () => {
+        savebtn.style.backgroundColor = "#4169e1"
+    })
+    // カーソルがボタンから離れたとき（もとの色に戻す）
+    savebtn.addEventListener("mouseleave", () => {
+        savebtn.style.backgroundColor = "#00a8e1"
+    })
     // ボタン押下時、canvasの画像をサーバに送信
     savebtn.addEventListener("click", () => {
         let data = {
@@ -48,7 +56,7 @@ const setBtn = () => {
 };
 
 // 画像保存の成否のメッセージを取得
-const setSocket = () => {
+const setResultSocket = () => {
     socket.on('msg', (val) => { alert(val) })
 };
 
