@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // 時間取得（年-月-日T時分秒）
 const getNow = () => {
     let dt = new Date(),
@@ -10,5 +12,14 @@ const getNow = () => {
     return `${y}-${m}-${d}T${h}${min}${s}`;
 };
 
+// ディレクトリがなかった場合、新しく作成
+const mkDir = (path) => {
+    if (!fs.existsSync(path)) {
+        fs.mkdirSync(path);
+        console.log(`Created directory: ${path}`)
+    }
+};
+
 // 共通の関数として設定
 exports.getNow = getNow;
+exports.mkDir = mkDir;
