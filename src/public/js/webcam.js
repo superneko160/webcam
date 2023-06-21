@@ -25,6 +25,7 @@ const setCamera = () => {
         drawCanvas()
     }).catch(err => {
         console.log(err)
+        showMessageInCanvas("カメラの接続が許可されていません")
     })
 };
 
@@ -58,6 +59,18 @@ const setButton = () => {
 // 画像保存の成否のメッセージを取得
 const setResultSocket = () => {
     socket.on('msg', (val) => { alert(val) })
+};
+
+// メッセージをCanvas内に表示
+const showMessageInCanvas = (message) => {
+    const fontSize = 24;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#000"; // 背景色を黒に設定
+    ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    ctx.fillStyle = "#fff";
+    ctx.font = `${fontSize}px sans-serif`;
+    ctx.textAlign = "center";
+    ctx.fillText(message, canvas.width / 2, canvas.height / 2);
 };
 
 // 処理の起動
