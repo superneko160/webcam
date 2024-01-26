@@ -12,7 +12,11 @@ v1.22.19
 
 ## setting  
 
-`yarn install`  
+Install Dev Containers(VSCode extension)  
+
+Open the command palette(shortcut key: F1) and select `Dev Containers: Rebuild and Reopen in Container`  
+
+`cd src` and `yarn install`  
 
 ## Run  
 
