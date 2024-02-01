@@ -2,7 +2,7 @@ const fs = require('fs');
 
 /**
  * 時間取得（年-月-日T時分秒）
- * @returns 
+ * @returns string yyyy-mm-dd_hhmmss
  */
 const getNow = () => {
   const dt = new Date();

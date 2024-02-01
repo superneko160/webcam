@@ -7,29 +7,34 @@ const savebtn = document.getElementById('savebtn');
 // eslint-disable-next-line
 const socket = io();
 
-// 起動処理
+/**
+ * 起動処理
+ */
 const init = () => {
   setCamera();
   setButton();
   setResultSocket();
 };
 
-// カメラ処理
-const setCamera = () => {
-  navigator.mediaDevices.getUserMedia({
-    video: true,
-    audio: false
-  }).then(stream => {
+/**
+ * カメラ処理
+ */
+const setCamera = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     video.srcObject = stream;
     video.play();
     drawCanvas();
-  }).catch(err => {
-    console.log(err);
+  }
+  catch (err) {
+    console.error(err);
     showMessageInCanvas('カメラの接続が許可されていません');
-  });
+  }
 };
 
-//  canvasの上にvideoを描画
+/**
+ * canvasの上にvideoを描画
+ */
 const drawCanvas = () => {
   const draw = () => {
     ctx.drawImage(video, 0, 0);
@@ -37,7 +42,9 @@ const drawCanvas = () => {
   setInterval(draw, 100);
 };
 
-// ボタン処理
+/**
+ * ボタン処理
+ */
 const setButton = () => {
   // カーソル選択時
   savebtn.addEventListener('mouseover', () => {
@@ -54,12 +61,17 @@ const setButton = () => {
   });
 };
 
-// 画像保存の成否のメッセージを取得
+/**
+ * 画像保存の成否のメッセージを取得
+ */
 const setResultSocket = () => {
   socket.on('msg', (val) => { alert(val); });
 };
 
-// メッセージをCanvas内に表示
+/**
+ * メッセージをCanvas内に表示
+ * @param string message 
+ */
 const showMessageInCanvas = (message) => {
   const fontSize = 24;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
