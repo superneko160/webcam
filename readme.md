@@ -1,24 +1,32 @@
-# Webcam  
+# Webcam
 
-Activate the webcam in the browser.  
+Activate the webcam in the browser.
 
-## versions  
+## versions
 
-`node --version`  
-v18.12.0  
+`node --version`
+v18.12.0
 
-`yarn --version`  
-v1.22.19  
+`yarn --version`
+v1.22.19
 
-## setting  
+## setting
 
-Install Dev Containers(VSCode extension)  
+Install Dev Containers(VSCode extension)
 
-Open the command palette(shortcut key: F1) and select `Dev Containers: Rebuild and Reopen in Container`  
+Open the command palette(shortcut key: F1) and select `Dev Containers: Rebuild and Reopen in Container`
 
-`cd src` and `yarn install`  
+`cd src` and `yarn install`
 
-## Run  
+## Run
 
-`cd src` and `node index.js`  
-Accesss: `http://localhost:3000`  
+`cd src` and `node index.js`
+Accesss: `http://localhost:3000`
+
+## Test
+
+`npm run test` or `yarn test`
+
+## ESLint
+
+`npm run lint` or `yarn lint`
