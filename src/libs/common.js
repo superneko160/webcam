@@ -29,11 +29,11 @@ const mkDir = (path) => {
 
 /**
  * 画像を保存
- * @param {*} data
+ * @param object data
  * @returns boolean 画像保存の成否
  */
 const saveImg = (data) => {
-  if (!data) {
+  if (!data.img) {
     return false;
   }
   const base64 = data.img.split(',')[1];  // imgの中身は0番目に保存形式などの基本情報、1番目に画像のデータがある

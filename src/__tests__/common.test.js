@@ -44,9 +44,14 @@ describe('mkDir', () => {
     });
 });
 
-// describe('saveImg', () => {
-//   it('should save an image successfully', () => {
-//   });
-//   it('should handle errors during image saving', () => {
-//   });
-// });
+describe('saveImg', () => {
+
+  // 画像保存が失敗するケース
+  test('should handle errors during image saving', () => {
+    const data = {
+      img: ''
+    }
+    const result = saveImg(data);
+    expect(result).toBe(false);
+  });
+});
