@@ -32,24 +32,28 @@ const mkDir = (path) => {
  * @param object data
  * @returns boolean 画像保存の成否
  */
-const saveImg = (data) => {
+const saveImg = async (data) => {
   if (!data.img) {
     return false;
   }
-  const base64 = data.img.split(',')[1];  // imgの中身は0番目に保存形式などの基本情報、1番目に画像のデータがある
-  const decode = Buffer.from(base64, 'base64');
-  // 画像保存用のディレクトリがなければ作成
-  const picdir = 'pictures';
-  mkDir(picdir);
-  // 年-月-日_時分秒.jpgで画像書込
-  const date = getNow();
-  fs.writeFile(`${picdir}/${date}.jpg`, decode, (err) => {
-    if (err) {
-      console.log(err);
-      return false;
-    }
-    console.log(`save image: ${date}.jpg`);
-    return true;
+  return new Promise((resolve, reject) => {
+    const base64 = data.img.split(',')[1];  // imgの中身は0番目に保存形式などの基本情報、1番目に画像のデータがある
+    const decode = Buffer.from(base64, 'base64');
+    // 画像保存用のディレクトリがなければ作成
+    const picdir = 'pictures';
+    mkDir(picdir);
+    // 年-月-日_時分秒.jpgで画像書込
+    const date = getNow();
+    fs.writeFile(`${picdir}/${date}.jpg`, decode, (err) => {
+      if (err) {
+        console.error(err);
+        resolve(false);
+      }
+      else {
+        console.log(`save image: ${date}.jpg`);
+        resolve(true);
+      }
+    });
   });
 };
 

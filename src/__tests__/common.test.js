@@ -44,14 +44,15 @@ describe('mkDir', () => {
     });
 });
 
+// saveImg関数のテスト
 describe('saveImg', () => {
 
   // 画像保存が失敗するケース
-  test('should handle errors during image saving', () => {
+  test('should handle errors during image saving', async () => {
     const data = {
       img: ''
     }
-    const result = saveImg(data);
+    const result = await saveImg(data);
     expect(result).toBe(false);
   });
 });

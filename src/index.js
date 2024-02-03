@@ -10,16 +10,11 @@ app.use('/', express.static('public'));
 
 // データ取得
 io.on('connection', (socket) => {
-  socket.on('videoimg', (data) => {
+  socket.on('videoimg', async (data) => {
     // 画像保存
-    const result = common.saveImg(data);
+    const result = await common.saveImg(data);
     // 画像保存の成否をクライアント側に送信
-    if (result) {
-      io.emit('msg', '保存に失敗しました');
-    }
-    else {
-      io.emit('msg', '保存しました');
-    }
+    result ? io.emit('msg', '保存しました') : io.emit('msg', '保存に失敗しました');
   });
 });
 
