@@ -2,7 +2,7 @@
 
 Activate the webcam in the browser.
 
-## versions
+## Versions
 
 `node --version`
 v18.12.0
@@ -10,7 +10,7 @@ v18.12.0
 `yarn --version`
 v1.22.19
 
-## setting
+## Setting
 
 Install Dev Containers(VSCode extension)
 
