@@ -1,3 +1,4 @@
+// const jest = require('jest');
 const fs = require('fs');
 const { getNow, mkDir, saveImg } = require('../libs/common');
 

@@ -5,10 +5,13 @@ Activate the webcam in the browser.
 ## Versions
 
 `node --version`
-v18.12.0
+v18.12.1
 
 `yarn --version`
 v1.22.19
+
+`bun --version`
+v1.0.27
 
 ## Setting
 
@@ -16,17 +19,17 @@ Install Dev Containers(VSCode extension)
 
 Open the command palette(shortcut key: F1) and select `Dev Containers: Rebuild and Reopen in Container`
 
-`cd src` and `yarn install`
+`cd app` and `bun install`
 
 ## Run
 
-`cd src` and `node index.js`
+`cd app` and `bun start`
 Accesss: `http://localhost:3000`
 
 ## Test
 
-`npm run test` or `yarn test`
+`yarn test`
 
 ## ESLint
 
-`npm run lint` or `yarn lint`
+`bun lint`
